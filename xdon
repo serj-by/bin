@@ -1,0 +1,2 @@
+. ~/.phpinipath
+sed -i.bak "s@#zend_extension=\"xdeb@zend_extension=\"xdeb@g" $PHP_INI_PATH

@@ -1,0 +1,5 @@
+curd=`mydate`;
+bakdir=~/Backups/$curd
+[ -d $bakdir ] || (echo "$bakdir not exists. Creating."; mkdir $bakdir);
+cd $bakdir;
+echo -n "Cur dir (baks): "; pwd;
