@@ -7,6 +7,6 @@ To use utils xdon, xdoff please copy to_place_in_home/.phpinipath to your home d
 \
 xdon - Turn XDebug ON\
 xdoff - Turn XDebug OFF\
-edhosts - Edit /etc/hosts via mcedit using root access\
+*edhosts - Edit /etc/hosts via mcedit using root access\
 *writeiso.sh - MacOS utility to write .iso files to USB-stick\
 *ddprogress.sh - shows progress of dd command\
