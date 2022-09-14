@@ -11,4 +11,4 @@ for i in range (global_trials):
     resel=max(res, key=lambda e: e[1])
     print ("res="+str(resel))
     globres[resel[0]]+=1
-print (globres)
+print ("Global score: "+str(globres))
