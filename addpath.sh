@@ -1,5 +1,11 @@
 NEWCMD="export PATH=\"`pwd`:\$PATH\""
 echo "Path cmd: $NEWCMD"
-echo $NEWCMD >> ~/.bash_profile
+if [[ `uname -s` -eq "Linux" ]]
+then
+ PROFILE="/home/`whoami`/.bashrc";
+else
+ PROFILE="/home/`whoami`/.bash_profile";
+fi
+echo $NEWCMD >> $PROFILE
 echo "Re-applying profile ..."
-. ~/.bash_profile
+. $PROFILE
