@@ -2,7 +2,7 @@
 from random import choice
 global_trials=5
 trials=1000
-opts=["cin", "mate", "macos"]
+opts=["cin", "mate", "macos", "mx"]
 globres=dict([(opt, 0) for opt in opts])
 for i in range (global_trials):
     lst=[choice(opts) for _ in range (trials)]
