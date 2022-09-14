@@ -40,6 +40,7 @@ echo "Writing $outfn to $2 ..."
 echo "Script dir is $SCPT_DIR"
 . $SCPT_DIR/ddprogress.sh & ddstpid=$!
 sudo dd if=$outfn of=/dev/$2 bs=1m
-sudo kill -3 $ddstpid
+#TODO: find the way to obtain ddstatus pid (possible solution - invoke /bin/bash instead of script)
+#sudo kill -3 $ddstpid
 echo "Wrote $outfn succesfully. Unmounting $2 ..."
 diskutil unmountDisk $2
