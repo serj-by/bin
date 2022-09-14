@@ -38,7 +38,7 @@ if [[ "$(id -u)" -ne "0" ]]; then
 fi
 echo "Writing $outfn to $2 ..."
 echo "Script dir is $SCPT_DIR"
-source $SCPT_DIR/ddprogress.sh & ddstpid=$!
+. $SCPT_DIR/ddprogress.sh & ddstpid=$!
 sudo dd if=$outfn of=/dev/$2 bs=1m
 sudo kill -3 $ddstpid
 echo "Wrote $outfn succesfully. Unmounting $2 ..."
