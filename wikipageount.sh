@@ -1,1 +1,0 @@
-printf "%'d\n" `grep -o "<page" $1 | wc -l`
