@@ -1,14 +1,17 @@
 NEWCMD="export PATH=\"`pwd`:\$PATH\""
 echo "Path cmd: $NEWCMD"
-if [[ `uname -s` -eq "Linux" ]]
+echo "System: `uname -s`"
+if [[ `uname -s` -eq "Darwin" ]]
 then
- PROFILE="/home/`whoami`/.bashrc";
+ PROFILE="$HOME/.bash_profile";
 else
- PROFILE="/home/`whoami`/.bash_profile";
+ PROFILE="$HOME/.bashrc";
 fi
-if [ ! -f PROFLE ]; then
+if [ ! -f $PROFLE ]; then
 echo "$PROFILE file not exists. Please check correct naming in `realpath $0`. Exiting."
 exit -1
+else
+echo "$PROFILE file exists. Adding $NEWCMD there."
 fi
 echo $NEWCMD >> $PROFILE
 echo "Re-applying profile ..."
