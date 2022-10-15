@@ -5,11 +5,14 @@ else
 NEWCMD="export PATH=\"`realpath $1`:\$PATH\""
 fi
 echo "Path cmd: $NEWCMD"
-echo "System: `uname -s`"
-if [[ `uname -s` -eq "Darwin" ]]
+OS=`uname -s`
+echo "System reported by uname: $OS"
+if [ "$OS" -eq "Darwin" ]
 then
+ echo "Seems like we are on macOS. Using .bash_profile profile file approach"
  PROFILE="$HOME/.bash_profile";
 else
+ echo "Seems like we are on Linux. Using .bashrc profile file approach"
  PROFILE="$HOME/.bashrc";
 fi
 echo "Profile file: $PROFILE"
