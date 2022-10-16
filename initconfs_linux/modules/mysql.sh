@@ -45,7 +45,7 @@ if [ $UPSTREAM_OS -eq "Ubuntu" ]; then
   esac
 fi
 
-if [ $WB_VER -eq "-" ]; then
+if [ "$WB_VER" -eq "-" ]; then
   echo "Unsupported OS for Workbench (only few versions of Ubuntu downstreams currently supported). Please install it manually. Exiting."
   exit -2
 else
@@ -53,7 +53,7 @@ else
 fi
 
 WBINI_URL=`echo "$WBINI_TPL" | sed "s@%VER%@$WB_VER@"`
-echo "Wb: WBINI_URL"
+echo "Wb: $WBINI_URL"
 
 
 
