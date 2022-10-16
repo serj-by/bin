@@ -1,4 +1,5 @@
-# Makes Fn keys on macbooks work like Fn keys, not multimedia/brightness controls
+#! /usr/bin/env bash
+# Makes Fn keys on MacBooks work like Fn keys, not multimedia/brightness controls
 # For current session
 echo "2" | sudo tee /sys/module/hid_apple/parameters/fnmode > /dev/null
 

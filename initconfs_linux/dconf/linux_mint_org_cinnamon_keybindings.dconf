@@ -1,6 +1,0 @@
-[desktop/keybindings/wm]
-panel-run-dialog=['<Alt>F2', '<Super>r']
-switch-group=['<Super>grave']
-switch-group-backward=['<Alt><Super>grave']
-switch-windows=['<Alt>Tab', '<Super>Tab']
-switch-windows-backward=['<Alt><Super>Tab']
