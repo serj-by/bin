@@ -1,13 +1,14 @@
 #! /usr/bin/env bash
 #! /usr/bin/env bash
+actions="install-wb"
+
+if [[ $actions == *"install-my"* ]]; then
 MYSQLURL="https://dev.mysql.com/"
 INITPART="downloads/repo/apt/"
 INITFN="/tmp/init.html"
 SIGNFN="/tmp/sign.html"
 APTCONFFN="/tmp/aptconf.deb"
 
-# Workench download configs
-WBINI_TPL="https://downloads.mysql.com/archives/workbench/?tpl=version&os=22&version=%VER%&osva="
 
 wget $MYSQLURL$INITPART -O $INITFN
 SIGNURL=`cat $INITFN | grep -oP '/downloads/file/\?id=\d+'`
@@ -28,13 +29,20 @@ sudo apt-get install mysql-community-server
 # TODO: no longr exists in MySQL repo. Need to download and install manually or via snap (UPD: snap version is broken, so download it and install below).
 #sudo apt-get install mysql-workbench-community
 #sudo snap install mysql-workbench-community
+fi
+# / install-my
 
 # Snap version of Workbench looks like broken so installing it from dev site
+# install-wb
+# Workench download configs
+WBINI_TPL="https://downloads.mysql.com/archives/workbench/?tpl=version&os=22&version=%VER%&osva="
+WB_INITFN="/tmp/wbinit.hml"
+if [[ $actions == *"install-wb"* ]]; then
 UPSTREAM_OS=`cat /etc/upstream-release/lsb-release | grep -Po '(?<=DISTRIB_ID=)(.+)$'`
 UPSTREAM_VER=`cat /etc/upstream-release/lsb-release | grep -Po '(?<=DISTRIB_RELEASE=)([\d\.]+)$'`
-echo "Upstream OS ($UPSTREAM_OS) Version: $UPSTREAM_OS_VER"
+echo "Upstream OS: $UPSTREAM_OS version: $UPSTREAM_VER"
 WB_VER="-"
-if [ $UPSTREAM_OS -eq "Ubuntu" ]; then
+if [ $UPSTREAM_OS = "Ubuntu" ]; then
   case $UPSTREAM_VER in
     "20.04")
 	WB_VER="8.0.21"
@@ -45,19 +53,38 @@ if [ $UPSTREAM_OS -eq "Ubuntu" ]; then
   esac
 fi
 
-if [ "$WB_VER" -eq "-" ]; then
-  echo "Unsupported OS for Workbench (only few versions of Ubuntu downstreams currently supported). Please install it manually. Exiting."
+if [ "$WB_VER" = "-" ]; then
+  echo "Unsupported OS (upstream is $UPSTREAM_OS ver $UPSTREAM_VER) for Workbench (only few versions of Ubuntu downstreams currently supported). Please install it manually. Exiting."
   exit -2
 else
   echo "For your upstream OS version ($UPSTREAM_VER) most suitale wookbench version is $WB_VER"
 fi
 
+WBDEB_BASEURL="https://downloads.mysql.com/"
 WBINI_URL=`echo "$WBINI_TPL" | sed "s@%VER%@$WB_VER@"`
-echo "Wb: $WBINI_URL"
+echo "Processing to download..."
+#gopen $WB_INITFN
+wget $WBINI_URL -O $WB_INITFN
+WBDEB_REGEXP_ARCHPART="_amd\d+"
+WBDEB_REGEXP_VERSPART="`echo $UPSTREAM_OS | tr '[:upper:]' '[:lower:]'`$UPSTREAM_VER$WBDEB_REGEXP_ARCHPART"
+WBDEB_REGEXP="\/archives\/get\/p\/\d*\/file\/mysql\-workbench\-community_[\d\.\-]+$WBDEB_REGEXP_VERSPART\.deb"
+WBDEB_RELURL=`cat $WB_INITFN | grep -oP '${WBDEB_REGEXP}'`
+WBDEB_FN=`echo -n $WBDEB_RELURL | grep -oP 'mysql\-workbench\-community_[\d\.]+\-.+?\.deb'`
+WBDEB_URL="$WBDEB_BASEURL$WBDEB_RELURL"
+echo "WB .deb ver part RegExp: $WBDEB_REGEXP_VERSPART"
+echo "WB .deb regexp: $WBDEB_REGEXP"
+echo "WB .deb init URL: $WBINI_URL"
+echo ".deb rel URL: $WBDEB_RELURL"
+echo ".deb URL: $WBDEB_URL"
+echo ".deb FN: $WBDEB_FN"
+
+fi
+# /install-wb
 
 
-
-
-echo "Setup complete. Proessing to configure..."
+# config-my
+if [[ $actions == *"config-my"* ]]; then
 sudo mysql_secure_installation
 sudo systemctl restart mysql
+fi
+# /config-my
