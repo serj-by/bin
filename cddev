@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+cd `echo $HOME`/dev
+echo "Cur dir (~/dev): `pwd`"
