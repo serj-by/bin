@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 #! /usr/bin/env bash
-actions="install-wb"
+actions="install-my install-wb"
 
 SKIP_DOWNLOAD="true"
 
