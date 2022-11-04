@@ -1,2 +1,2 @@
-#! /usr/bin bash
-sudo ext4fuse /dev/disk1s2 ~/lnx_mount -o allow_other
+#! /usr/bin/env bash
+sudo ext4fuse /dev/disk2s1 ~/lnx_mount -o allow_other
