@@ -1,0 +1,1 @@
+mysqldump -u root -prootmysql $1 > $1_`sbdate`.sql
