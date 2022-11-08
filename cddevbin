@@ -1,4 +1,4 @@
 #! /usr/bin/env bash
-cddev
+. cddev
 cd bin
 echo "Cur dir (~/dev/bin): `pwd`"

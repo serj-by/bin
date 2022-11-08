@@ -7,4 +7,4 @@ touch "$LOGFN"
 echo "$LOGFN created,"
 echo -n '' > "$LOGFN"
 echo "$LOGFN emptied. Logging."
-while true; do date "+%F %T" | tee -a "$LOGFN"; df | egrep DATAEXT\|Avail | tee -a "$LOGFN"; sleep 0.1; done;
+while true; do date "+%F %T" | tee -a "$LOGFN"; df | egrep DATAEXT\|Avail\|LIN\|disk2s1 | tee -a "$LOGFN"; sleep 0.1; done;
