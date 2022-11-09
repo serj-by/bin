@@ -1,0 +1,3 @@
+export dbname="wikti_ru"
+export dbuser="root"
+export dbpass="rootmysql"

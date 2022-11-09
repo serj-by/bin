@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+cd `echo $HOME`/www
+echo "Cur dir: `pwd`"

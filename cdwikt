@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdloc
+cd wikti_ru/r
+echo "Cur dir: `pwd`"

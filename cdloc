@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdwww
+cd locamp
+echo "Cur dir: `pwd`"
