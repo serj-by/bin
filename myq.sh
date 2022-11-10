@@ -2,7 +2,7 @@
 . ~/.mydb_local_conf
 USAGE="
 Usage:\n\
-$0 [-countpages|-maxpageid|-lastpagetitlt|<free form query>] [--silent] [<dbname>]
+$0 [--help|-countpages|-maxpageid|-lastpagetitlt|<free form query>] [--silent] [<dbname>]
 "
 silent=false
 opts=""
@@ -42,4 +42,4 @@ case "$q" in
 ;;
 esac
 
-mysql $opts --login-path=$dbloginpath $dbname -e "$q"
+mysql --login-path=$dbloginpath $opts $dbname -e "$q"
