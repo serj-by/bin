@@ -2,7 +2,7 @@
 . ~/.mydb_local_conf
 USAGE="
 Usage:\n\
-$0 [--help|-countpages|-maxpageid|-lastpagetitlt|<free form query>] [--silent] [<dbname>]
+$0 [--help|--countpages|--lastpageid|--lastpagetitle|<free form query>] [--silent] [<dbname>]
 "
 silent=false
 opts=""
@@ -21,15 +21,15 @@ if [[ ! $silent ]]; then echo "DB: $dbname"; fi
 q=$1
 if [[ ! $silent ]]; then echo "Q: $q"; fi
 case "$q" in
-"-countpages")
+"--countpages")
     q="select count(*) as count_pages from wiki_page;"
     if [[ ! $silent ]]; then echo "Count pages"; fi
 ;;
-"-maxpageid")
+"--lastpageid")
     q="select max(page_id) as max_page_id from wiki_page;"
     if [[ ! $silent ]]; then echo "Max page id"; fi
 ;;
-"-laspagetitle")
+"--lastpagetitle")
     q="select page_id as ma_page_id , convert(page_title using utf8) as max_page_title_text from wiki_page where page_id=(select max(page_id) from wiki_page);"
     if [[ ! $silent ]]; then echo "Last page title"; fi 
 ;;
