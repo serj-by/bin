@@ -1,2 +1,2 @@
-rint=0.5
-while true; do wikistat.sh $@; sleep $rint; done;
+refrint=0.5
+while true; do wikistat.sh $1; sleep $refrint; done;

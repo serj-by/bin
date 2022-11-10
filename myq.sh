@@ -2,13 +2,16 @@
 . ~/.mydb_local_conf
 USAGE="
 Usage:\n\
-$0 [--help|--countpages|--lastpageid|--lastpagetitle|<free form query>] [--silent] [<dbname>]
+$0 [--help|--countpages|--lastpageid|--lastpagetitle|<free form query>] [--silent|--nosilent] [<dbname>]\n\
 "
 silent=false
 opts=""
 if [[ $2 == "--silent" ]]; then
 silent=true
 opts="-s -N"
+elif [[ $2 == "--nosilent" ]]; then
+silent=false
+opts=""
 fi
 dbname=$default_dbname
 if [ -n "$3" ]; then
