@@ -1,4 +1,5 @@
-export dbname="wikti_ru"
-export dbuser="root"
-export dbpass="rootmysql"
+#export dbname="wikti_ru"
+#export dbuser="root"
+#export dbpass="rootmysql"
+export dbloginpath="wiki"
 export default_dbname="wikti_ru"
