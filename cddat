@@ -1,0 +1,2 @@
+cd /Volumes/DATAEXT/
+echo -n "Cur dir (DATA): "; pwd;
