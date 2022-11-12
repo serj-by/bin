@@ -13,7 +13,10 @@ if [ "$dbex" != "$db" ]; then
 else
   tbls=`myq.sh "select TABLE_NAME from INFORMATION_SCHEMA.tables where tables.TABLE_SCHEMA='$db' limit $dbtbltestn;" --silent`
   if [ -n "$tbls" -a "$3" -ne "--force" ]; then
-    if [[ "$3" -ne "--force" -a "$3" ~= "--sections=(.+)"]]
+// WIP: conditional binary operator expected
+//    if [[ "$3" -ne "--force" && "$3" ~= "--sections=(.+)" ]]; then
+//      filtersections.py $3
+//    fi
     echo -n "$db DB is not empty. First $dbtbltestn tables exist in DB:";
     echo $tbls;
     q="DROP DATABASE $db; CREATE DATABASE $db;"
@@ -25,7 +28,7 @@ else
 fi
 USAGE="
 Usage:\n\
-$0 <mysql-dump-filename> <db-name>\n\
+$0 <mysql-dump-filename> <db-name> [--force|--sections=<comma-sparated sections list like dumps|creates>]\n\
 "
 if [ $1 == "--help" ]; then
 echo -e $USAGE
