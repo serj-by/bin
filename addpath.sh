@@ -7,7 +7,7 @@ fi
 echo "Path cmd: $NEWCMD"
 OS=`uname -s`
 echo "System reported by uname: $OS"
-if [ "$OS" -eq "Darwin" ]
+if [ "$OS" == "Darwin" ]
 then
  echo "Seems like we are on macOS. Using .bash_profile profile file approach"
  PROFILE="$HOME/.bash_profile";
