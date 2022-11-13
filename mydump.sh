@@ -9,8 +9,8 @@ echo -e $USAGE;
 exit -1;
 fi
 if [ -n "$2" ]; then
-cmnt=`echo "$2" | sed "s@[^a-zA-A\d]@_@g"`
+cmnt=`echo "$2" | sed "s@[^a-zA-Z[[:digit:]]ЁёА-я]@_@g"`
 echo "Comment part of file name: $cmnt"
 fi
-
+exit -5
 mysqldump --login-path=$dbloginpath --verbose $1 > $1_`sbdate`__`sbtime short_`__$cmnt.sql
