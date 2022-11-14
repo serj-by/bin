@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cbak
+mkdir -p _sql
+cd _sql
