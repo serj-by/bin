@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+cd `echo $HOME`/log
+echo "Cur dir (~/log): `pwd`"

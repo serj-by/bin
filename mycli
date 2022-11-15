@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+. ~/.mydb_local_conf
+db=$1
+USAGE="
+Usage:\n\
+$0 <db-name>\n\
+"
+if [ $1 == "--help" ]; then
+echo -e $USAGE
+exit 0
+fi
+mysql --login-path=$dbloginpath $1
