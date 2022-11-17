@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdloc
+cd reiki_ru/r/extensions/Synthes
+echo "Cur dir: `pwd`"
