@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-fldname="/Volumes/DATAEXT/Doenloads/_dev/_soft/_mediawiki"
+fldname="/Volumes/DATAEXT/Downloads/_dev/_soft/_mediawiki"
 arname="mediawiki-1.38.4"
 tarext="tar.gz"
 intname="r"
