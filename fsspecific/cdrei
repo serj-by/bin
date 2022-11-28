@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdloc
+cd reiki_ru/r
+echo "Cur dir: `pwd`"
