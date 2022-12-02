@@ -33,7 +33,7 @@ case "$q" in
     if [[ ! $silent ]]; then echo "Max page id"; fi
 ;;
 "--lastpagetitle")
-    q="select page_id as ma_page_id , convert(page_title using utf8) as max_page_title_text from wiki_page where page_id=(select max(page_id) from wiki_page);"
+    q="select page_id as max_page_id , convert(page_title using utf8) as max_page_title_text from wiki_page where page_id=(select max(page_id) from wiki_page);"
     if [[ ! $silent ]]; then echo "Last page title"; fi 
 ;;
 "--help")
