@@ -1,0 +1,3 @@
+#! /bin/usr/env bash
+git commit -am $@
+git push
