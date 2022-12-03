@@ -6,8 +6,8 @@ if [[ $2 == "--silent" ]]; then
 silent=true
 fi
 
-echo -n "silent: "
-echo "$silent"
+#echo -n "silent: "
+#echo "$silent"
 
 if [ -n $1 ]; then
 if [[ ! $silent ]]; then echo "First param is not empty - $1 . Using as DB name"; fi
