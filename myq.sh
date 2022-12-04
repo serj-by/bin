@@ -36,6 +36,11 @@ case "$q" in
     q="select page_id as max_page_id , convert(page_title using utf8) as max_page_title_text from wiki_page where page_id=(select max(page_id) from wiki_page);"
     if [[ ! $silent ]]; then echo "Last page title"; fi 
 ;;
+"--langparts")
+#    q='select sum(IF(old_text like "%{{сущ ru%", 1, 0)) as "nouns",sum(IF(old_text like "%{{сущ ru%", 1, 0)) as "verbs",sum(IF(old_text like "%{{прил ru%", 1, 0)) as "adjectives",sum(IF(old_text like "%{{числ ru%", 1, 0)) as "numerals",sum(IF(old_text like "%{{буква%", 1, 0)) as "letters",sum(IF(old_text like "%{{part ru%" and old_text not like "%{{предик.|ru%", 1, 0)) as "particles",sum(IF(old_text like "%{{предик.|ru%" or old_text like "%|или=предикатив%", 1, 0)) as "predicatives",sum(IF(old_text like "%{{adv ru%", 1, 0)) as "adverbs",count(*) as "TOTAL"from wiki_text;';
+    q='select sum(IF(old_text like "%{{сущ ru%", 1, 0)) as "nouns",sum(IF(old_text like "%{{сущ ru%", 1, 0)) as "verbs",sum(IF(old_text like "%{{прил ru%", 1, 0)) as "adjs",sum(IF(old_text like "%{{числ ru%", 1, 0)) as "nums",sum(IF(old_text like "%{{буква%", 1, 0)) as "ltrs",sum(IF(old_text like "%{{part ru%" and old_text not like "%{{предик.|ru%", 1, 0)) as "parts",sum(IF(old_text like "%{{предик.|ru%" or old_text like "%|или=предикатив%", 1, 0)) as "preds",sum(IF(old_text like "%{{adv ru%", 1, 0)) as "adverbs",count(*) as "TTL"from wiki_text;';
+    if [[ ! $silent ]]; then echo "Lang part stats"; fi
+;;
 "--help")
     echo -e $USAGE
     exit 0;

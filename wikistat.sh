@@ -22,3 +22,4 @@ if [[ ! $silent ]]; then echo "DB: $dbname"; fi
 myq.sh --countpages --nosilent $dbname
 myq.sh --lastpageid --nosilent $dbname
 myq.sh --lastpagetitle --nosilent $dbname
+myq.sh --langparts --nosilent $dbname
