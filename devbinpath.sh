@@ -1,0 +1,1 @@
+export PATH=~/dev/bin:$PATH

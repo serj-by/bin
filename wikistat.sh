@@ -1,3 +1,4 @@
+#! /usr/bin/env bash
 . ~/.mydb_local_conf
 dbname=$default_dbname
 
@@ -22,4 +23,4 @@ if [[ ! $silent ]]; then echo "DB: $dbname"; fi
 myq.sh --countpages --nosilent $dbname
 myq.sh --lastpageid --nosilent $dbname
 myq.sh --lastpagetitle --nosilent $dbname
-myq.sh --langparts --nosilent $dbname
+myq_ru.sh --langparts --nosilent $dbname
