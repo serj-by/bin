@@ -1,0 +1,10 @@
+zend_extension="xdebug.so"
+xdebug.mode=debug
+#xdebug.start_with_request=yes
+xdebug.discover_client_host=1
+xdebug.client_host=localhost
+xdebug.client_port=9003
+xdebug.output_dir=/tmp
+xdebug.log=/Users/serj/log/xdebug.log
+xdebug.cli_color=1
+xdebug.show_local_vars=1

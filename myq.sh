@@ -25,11 +25,11 @@ q=$1
 if [[ ! $silent ]]; then echo "Q: $q"; fi
 case "$q" in
 "--countpages")
-    q="select count(*) as count_pages from wiki_page;"
+    q="select format(count(*),0) as count_pages from wiki_page;"
     if [[ ! $silent ]]; then echo "Count pages"; fi
 ;;
 "--lastpageid")
-    q="select max(page_id) as max_page_id from wiki_page;"
+    q="select format(max(page_id),0) as max_page_id from wiki_page;"
     if [[ ! $silent ]]; then echo "Max page id"; fi
 ;;
 "--lastpagetitle")
