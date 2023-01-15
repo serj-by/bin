@@ -1,0 +1,18 @@
+FROMDIR="/Users/serj/www/locamp/reiki_ru/r/extensions/Synthes"
+DB="reiki_ru"
+. cdbak
+TMDIR=`sbtime short_`
+mkdir $TMDIR
+cd $TMDIR
+BKDIR=`pwd`
+echo "Bak dir: $BKDIR . Copy from $FROMDIR ..."
+cp -R $FROMDIR $BKDIR
+cd $FROMDIR
+echo "Commit from `pwd` ..."
+gcm "auto commit after backup"
+SQLDIR=$BKDIR/_sql
+mkdir $SQLDIR
+cd $SQLDIR
+echo "Dumping SQL into `pwd`"
+mydump.sh $DB "backup dump"
+

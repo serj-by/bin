@@ -1,3 +1,4 @@
+# more options: https://xdebug.org/docs/develop
 zend_extension="xdebug.so"
 xdebug.mode=debug
 #xdebug.start_with_request=yes
@@ -8,3 +9,6 @@ xdebug.output_dir=/tmp
 xdebug.log=/Users/serj/log/xdebug.log
 xdebug.cli_color=1
 xdebug.show_local_vars=1
+xdebug.dump_globals=1
+xdebug.show_error_trace=1
+xdebug.show_exception_trace=1
