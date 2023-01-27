@@ -46,7 +46,7 @@ case "$q" in
     if [[ ! $silent ]]; then echo "Lang part stats"; fi
 ;;
 "--dumpviews")
-    q='SET SESSION group_concat_max_len = 100000; SELECT group_concat(distinct concat(concat("-- Begin dump of ", TABLE_NAME, "\nCREATE OR REPLACE VIEW `", TABLE_NAME, "` AS\n", VIEW_DEFINITION), ";\n-- End dump of ", table_name, "\n") order by TABLE_NAME separator "\n") FROM information_schema.VIEWS where table_schema="reiki_ru";'
+q="SET SESSION group_concat_max_len = 100000; SELECT replace(group_concat(distinct concat(concat('-- Begin dump of ', TABLE_NAME, CHAR(10), 'CREATE OR REPLACE VIEW \`', TABLE_NAME, '\` AS', CHAR(10), VIEW_DEFINITION), ';', CHAR(10),'-- End dump of ', table_name, CHAR(10)) order by TABLE_NAME separator '\\n'), '\`$dbname\`.', '') FROM information_schema.VIEWS where table_schema='$dbname';"
     if [[ ! $silent ]]; then echo "Dump views"; fi
 ;;
 
@@ -59,4 +59,4 @@ case "$q" in
 ;;
 esac
 
-mysql --login-path=$dbloginpath $opts $dbname -e "$q"
+exec mysql --login-path=$dbloginpath $opts $dbname -e "$q"
