@@ -20,7 +20,7 @@ if [ ! -f $PROFLE ]; then
 echo "$PROFILE file not exists. Please check correct naming in `realpath $0`. Exiting."
 exit -1
 else
-echo "$PROFILE file exists. Adding new path there."
+echo "$PROFILE file exists. Adding new path there: $NEWCMD"
 fi
 echo $NEWCMD >> $PROFILE
 echo "Re-applying profile ..."
