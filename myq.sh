@@ -2,7 +2,7 @@
 . ~/.mydb_local_conf
 USAGE="
 Usage:\n\
-$0 [--help|--countpages|--lastpageid|--lastpagetitle|<free form query>] [--silent|--nosilent] [<dbname>]\n\
+$0 [--help|--countpages|--lastpageid|--lastpagetitle|--dumpviews|<free form query>] [--silent|--nosilent] [<dbname>]\n\
 "
 silent=false
 opts=""
@@ -12,7 +12,11 @@ opts="-r -s -N"
 elif [[ $2 == "--nosilent" ]]; then
 silent=false
 opts=""
+elif [[ $2 == "--silentbutinfo" ]]; then
+silent=false
+opts="-r -s -N"
 fi
+#echo "silopts $silent $opts"
 dbname=$default_dbname
 if [ -n "$3" ]; then
 if [[ ! $silent ]]; then echo "DB param is not empty - $3 . Using as DB name"; fi
