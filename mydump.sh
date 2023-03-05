@@ -12,7 +12,12 @@ if [ -n "$2" ]; then
 cmnt=`echo "$2" | sed "s@[^a-zA-Z0-9ЁёА-я]@_@g"`
 echo "Comment part of file name: $cmnt"
 fi
-echo "Dumping main SQL data..."
-mysqldump --login-path=$dbloginpath --verbose --routines $1 > $1_`sbdate`__`sbtime short_`__$cmnt.sql
-echo "Dumping SQL views..."
-myq.sh --dumpviews --silent > views_$1_`sbdate`__`sbtime short_`__$cmnt.sql
+mydump_fn=$1_`sbdate`__`sbtime short_`__$cmnt.sql
+echo "Dumping main SQL data into $mydump_fn ..."
+mysqldump --login-path=$dbloginpath --verbose --routines $1 > $mydump_fn
+echo "Start GZipping SQL data in $0 for $mydump_fn ..."
+gzip $mydump_fn
+echo "Finished GZipping SQL data in $0 for $mydump_fn ..."
+myviews_fn=views_$1_`sbdate`__`sbtime short_`__$cmnt.sql
+echo "Dumping SQL views in $0 for $myviews_fn ..."
+myq.sh --dumpviews --silent > $myviews_fn
