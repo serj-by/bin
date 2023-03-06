@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdsynt
+cd src/_tests_phpsql
+echo "Cur dir: `pwd`"

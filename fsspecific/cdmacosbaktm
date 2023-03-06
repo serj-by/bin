@@ -1,0 +1,7 @@
+. cdbak
+TMDIR=`sbtime short_`
+mkdir $TMDIR
+cd $TMDIR
+bakdir=`pwd`
+cd $bakdir;
+echo -n "Cur dir (baks): "; pwd;
