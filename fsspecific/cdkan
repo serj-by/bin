@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdloc
+cd kanboard
+echo "Cur dir: `pwd`"
