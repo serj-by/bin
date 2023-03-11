@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdsynt
+cd _words_ru/_from_words
+echo "Cur dir: `pwd`"

@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdsynt
+cd db/migrations
+echo "Cur dir: `pwd`"
