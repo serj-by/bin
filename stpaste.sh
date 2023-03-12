@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
+. cdwords
 USAGE="
 Usage:\n\
 $0 [dump_suffix]

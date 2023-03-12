@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 . cdsynt
-cd _words_ru/_from_words
+cd db/_backups
 if [ "$1" != "--nodate" -a "$1" != "nodate" -a "$1" != "nodt" -a "$1" != "--nodt" -a "$1" != "nodt" ]; then
 dt=`sbdate`
 mkdir -p $dt
