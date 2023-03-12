@@ -1,4 +1,6 @@
 #! /usr/bin/env bash
 . cdsynt
 cd _words_ru/_from_words
+mkdir -p `sbdate`
+cd sbdate
 echo "Cur dir: `pwd`"
