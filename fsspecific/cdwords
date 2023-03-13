@@ -3,10 +3,11 @@
 cd _words_ru/_from_words
 if [ "$1" != "--nodate" -a "$1" != "nodate" -a "$1" != "nodt" -a "$1" != "--nodt" -a "$1" != "nodt" ]; then
 dt=`sbdate`
+echo "Use $dt as date folder..."
 mkdir -p $dt
 cd $dt
-echo "No --nodate param passed so cd to $dt."
+echo "No --nodate param passed so cd to $dt..."
 else 
-echo "--nodate param passed so cd to `pwd`."
+echo "--nodate param passed so cd to `pwd`..."
 fi
 echo "Cur dir: `pwd`"

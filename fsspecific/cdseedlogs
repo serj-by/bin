@@ -1,2 +1,11 @@
 . cdsynt
 cd _seedlogs
+if [ $1 == "-nodate" ]; then
+echo "No date param passed. Skip date folder creation..."
+else
+$dt=`sbdate`
+echo "Creating date $dt folder and cd into..."
+mkdir -p $dt
+cd $dt
+fi
+echo "Cur dir: `pwd`"

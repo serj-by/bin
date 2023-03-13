@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 USAGE="
 Usage:\n\
-$0 [migration_name]
+$0 [migration_prefix]
 "
 . cdmig
 migpath=`pwd`/
