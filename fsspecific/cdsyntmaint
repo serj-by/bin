@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdsynt
+cd maintenance
+echo "Cur dir: `pwd`"

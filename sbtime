@@ -1,3 +1,4 @@
+#! /usr/bin/env bash
 format="+%T"
 if [ "$1" == "short" ]; then
 format="+%H:%M";

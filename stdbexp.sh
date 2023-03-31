@@ -9,4 +9,4 @@ else
 echo "Extended inserts dump";
 fi
 echo "Exporting SynThes relate tables to `pwd`/$fn"
-mysqldump --login-path=wiki $opts reiki_ru synthes_word synthes_rel_word synthes_extra_word > $fn
+mysqldump --login-path=wiki $opts reiki_ru synthes_word synthes_word_rel synthes_word_extra > $fn
