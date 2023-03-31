@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdsyntmaint
+cd lists
+echo "Cur dir: `pwd`"
