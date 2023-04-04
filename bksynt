@@ -8,13 +8,16 @@ BKDIR=`pwd`
 echo "Bak dir: $BKDIR . Copy from $FROMDIR ..."
 cp -R $FROMDIR $BKDIR
 cd $FROMDIR
-if [ "$1" != "skipgit" -a "$1" != "skip" ]; then
+if [ "$1" != "--skipgit" -a "$1" != "--skip" ]; then
 echo "Commit from `pwd` ..."
+export SkipGCMKPCheckOld="$SkipGCMKPCheck"
+export SkipGCMKPCheck="true"
 gcm "auto commit after backup"
+export SkipGCMKPCheck="$SkipGCMKPCheckOld"
 else
 echo "Skip git commit due to first argument is '$1' ..."
 fi
-if [ "$1" != "skipsql" -a "$1" != "skip" ]; then
+if [ "$1" != "--skipsql" -a "$1" != "--skip" ]; then
 SQLDIR=$BKDIR/_sql
 mkdir $SQLDIR
 cd $SQLDIR
