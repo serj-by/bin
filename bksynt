@@ -10,10 +10,10 @@ cp -R $FROMDIR $BKDIR
 cd $FROMDIR
 if [ "$1" != "--skipgit" -a "$1" != "--skip" ]; then
 echo "Commit from `pwd` ..."
-export SkipGCMKPCheckOld="$SkipGCMKPCheck"
-export SkipGCMKPCheck="true"
-gcm "auto commit after backup"
-export SkipGCMKPCheck="$SkipGCMKPCheckOld"
+#export SkipGCMKPCheckOld="$SkipGCMKPCheck"
+#export SkipGCMKPCheck="true"
+gcm_noint "auto commit after backup"
+#export SkipGCMKPCheck="$SkipGCMKPCheckOld"
 else
 echo "Skip git commit due to first argument is '$1' ..."
 fi
