@@ -1,7 +1,9 @@
 FROMDIR="/Users/serj/www/locamp/reiki_ru/r/extensions/Synthes"
 DB="reiki_ru"
 . cdbak
-TMDIR=`sbtime short_`
+PARAMPART="`echo -n $@ | tr -c '[[:alnum:]]' '_'`"
+echo "Suffix from param: $PARAMPART"
+TMDIR="`sbtime short_`__$PARAMPART"
 mkdir $TMDIR
 cd $TMDIR
 BKDIR=`pwd`
@@ -10,10 +12,13 @@ cp -R $FROMDIR $BKDIR
 cd $FROMDIR
 if [ "$1" != "--skipgit" -a "$1" != "--skip" ]; then
 echo "Commit from `pwd` ..."
-#export SkipGCMKPCheckOld="$SkipGCMKPCheck"
-#export SkipGCMKPCheck="true"
-gcm_noint "auto commit after backup"
-#export SkipGCMKPCheck="$SkipGCMKPCheckOld"
+COMMITMSG="auto commit after backup"
+if [ "$@" != "" ]; then
+COMMITMSG="$@"
+fi
+echo "Start commit with msg: $COMMITMSG"
+gcm_noint $COMMITMSG
+echo "Finished commit with msg: $COMMITMSG"
 else
 echo "Skip git commit due to first argument is '$1' ..."
 fi
@@ -21,8 +26,10 @@ if [ "$1" != "--skipsql" -a "$1" != "--skip" ]; then
 SQLDIR=$BKDIR/_sql
 mkdir $SQLDIR
 cd $SQLDIR
-echo "Dumping SQL into `pwd`"
+echo "Start Dumping SQL into `pwd`"
 mydump.sh $DB "backup dump"
+echo "Finished dumping SQL"
 else
 echo "Skip SQL dump due to first argument is '$1' ..."
 fi
+echo "Backup complete"
