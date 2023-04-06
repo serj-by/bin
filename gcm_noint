@@ -1,4 +1,4 @@
 #! /usr/bin/env bash
 git add .
-git commit -am "$@"
+echo git commit -a -m "\"$@\""
 git push
