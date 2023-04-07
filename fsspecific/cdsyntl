@@ -1,4 +1,4 @@
 #! /usr/bin/env bash
 . cdsyntmaint
-cd lists
+cd sistem_utils
 echo "Cur dir: `pwd`"

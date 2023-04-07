@@ -2,8 +2,14 @@ FROMDIR="/Users/serj/www/locamp/reiki_ru/r/extensions/Synthes"
 DB="reiki_ru"
 . cdbak
 PARAMPART="`echo -n $@ | tr -c '[[:alnum:]]' '_'`"
+if [ "$PARAMPART" == "" ]; then
+echo "Params empty. Processing by defults..."
+TMDIR="`sbtime short_`"
+else
 echo "Suffix from param: $PARAMPART"
 TMDIR="`sbtime short_`__$PARAMPART"
+fi
+echo "Creating in-date directory $TMDIR ..."
 mkdir $TMDIR
 cd $TMDIR
 BKDIR=`pwd`
@@ -17,7 +23,7 @@ if [ "$@" != "" ]; then
 COMMITMSG="$@"
 fi
 echo "Start commit with msg: $COMMITMSG"
-gcm_noint $COMMITMSG
+gcm_noint "\"$COMMITMSG\""
 echo "Finished commit with msg: $COMMITMSG"
 else
 echo "Skip git commit due to first argument is '$1' ..."
@@ -32,4 +38,4 @@ echo "Finished dumping SQL"
 else
 echo "Skip SQL dump due to first argument is '$1' ..."
 fi
-echo "Backup complete"
+echo "Backup complete at `sbdate dashed` @ `sbtime`"
