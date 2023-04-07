@@ -1,9 +1,14 @@
 FROMDIR="/Users/serj/www/locamp/reiki_ru/r/extensions/Synthes"
 DB="reiki_ru"
 . cdbak
-PARAMPART="`echo -n $@ | tr -c '[[:alnum:]]' '_'`"
+SKIPS="$1"
+shift
+COMMENTPARAMS="$@"
+echo "Skips: $SKIPS"
+echo "CommentParams: $COMMENTPARAMS"
+PARAMPART="`echo -n $COMMENTPARAMS | tr -c '[[:alnum:]]' '_'`"
 if [ "$PARAMPART" == "" ]; then
-echo "Params empty. Processing by defults..."
+echo "Params empty. Processing with defults..."
 TMDIR="`sbtime short_`"
 else
 echo "Suffix from param: $PARAMPART"
@@ -16,7 +21,7 @@ BKDIR=`pwd`
 echo "Bak dir: $BKDIR . Copy from $FROMDIR ..."
 cp -R $FROMDIR $BKDIR
 cd $FROMDIR
-if [ "$1" != "--skipgit" -a "$1" != "--skip" ]; then
+if [ "$SKIPS" != "--skipgit" -a "$SKIPS" != "--skip" ]; then
 echo "Commit from `pwd` ..."
 COMMITMSG="auto commit after backup"
 if [ "$@" != "" ]; then
@@ -26,9 +31,9 @@ echo "Start commit with msg: $COMMITMSG"
 gcm_noint "\"$COMMITMSG\""
 echo "Finished commit with msg: $COMMITMSG"
 else
-echo "Skip git commit due to first argument is '$1' ..."
+echo "Skip git commit due to first argument is '$SKIPS' ..."
 fi
-if [ "$1" != "--skipsql" -a "$1" != "--skip" ]; then
+if [ "$SKIPS" != "--skipsql" -a "$SKIPS" != "--skip" ]; then
 SQLDIR=$BKDIR/_sql
 mkdir $SQLDIR
 cd $SQLDIR
@@ -36,6 +41,6 @@ echo "Start Dumping SQL into `pwd`"
 mydump.sh $DB "backup dump"
 echo "Finished dumping SQL"
 else
-echo "Skip SQL dump due to first argument is '$1' ..."
+echo "Skip SQL dump due to first argument is '$SKIPS' ..."
 fi
 echo "Backup complete at `sbdate dashed` @ `sbtime`"
