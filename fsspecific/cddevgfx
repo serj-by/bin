@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cddev
+cd gfx
+echo "Cur dir (~/dev/gfx): `pwd`"
