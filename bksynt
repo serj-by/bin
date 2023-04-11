@@ -39,6 +39,8 @@ mkdir $SQLDIR
 cd $SQLDIR
 echo "Start Dumping SQL into `pwd`"
 mydump.sh $DB "backup dump"
+echo "Start Dumping SISTem SQL into `pwd`"
+simydump.sh $DB "backup dump"
 echo "Finished dumping SQL"
 else
 echo "Skip SQL dump due to first argument is '$SKIPS' ..."

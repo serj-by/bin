@@ -4,7 +4,7 @@ USAGE="
 Usage:\n\
 $0 <dbname> [<comment>]
 "
-if [ -z $1 ]; then
+if [ -z "$1" ]; then
 echo -e $USAGE;
 exit -1;
 fi
@@ -13,8 +13,8 @@ cmnt=`echo "$2" | sed "s@[^a-zA-Z0-9ЁёА-я]@_@g"`
 echo "Comment part of file name: $cmnt"
 fi
 mydump_fn=$1_`sbdate`__`sbtime short_`__$cmnt.sql
-echo "Dumping main SQL data into $mydump_fn ..."
-mysqldump --login-path=$dbloginpath --verbose --routines $1 > $mydump_fn
+echo "Dumping SynThes SQL data into $mydump_fn ..."
+mysqldump --login-path=$dbloginpath --verbose --routines $1 `print_not_sistem_tables.sh` > $mydump_fn
 echo "Start GZipping SQL data in $0 for $mydump_fn ..."
 gzip $mydump_fn
 echo "Finished GZipping SQL data in $0 for $mydump_fn ..."
