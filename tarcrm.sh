@@ -18,16 +18,13 @@ echo "Trying to create $ANAME from $FNAME...";
 CMD="tar -czvf $ANAME $FNAME"
 echo "Ececuting $CMD"
 $CMD
-
-tar -czvf $ARCHNAME $FNAME
 if [ $? -eq 0 ]; then
 echo "TAR exited with zero status. Success!";
-
 echo "removing $FNAME ...";
-rm -rv $FNAME
-
+CMD="rm -rv $FNAME"
+echo "Ececuting $CMD"
+$CMD
 else
 echo "Error $? while executing tar -czvf. Nothing will be removed. Error!";
 exit $?
 fi
-#echo "ARCH! TEST..."; tar tzvf $ARCHNAME && echo "TESTED!" || echo "FAILED..."
