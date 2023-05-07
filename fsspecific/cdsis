@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdloc
+cd sistem
+echo "Cur dir: `pwd`"

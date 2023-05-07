@@ -1,0 +1,2 @@
+#! /usr/bin/env bash
+mysql --login-path=wiki --silent --raw --skip-column-names --execute 'SET SESSION group_concat_max_len = 100000; select group_concat(distinct table_name order by table_type separator " ") as sistem_tables from information_schema.tables where table_name like "synthes_%" and table_schema="reiki_ru"'
