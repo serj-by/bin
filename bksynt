@@ -1,4 +1,5 @@
 FROMDIR="/Users/serj/www/locamp/reiki_ru/r/extensions/Synthes"
+TARFN="Synthes"
 DB="reiki_ru"
 . cdbak
 SKIPS="$1"
@@ -20,6 +21,11 @@ cd $TMDIR
 BKDIR=`pwd`
 echo "Bak dir: $BKDIR . Copy from $FROMDIR ..."
 cp -R $FROMDIR $BKDIR
+cd $BKDIR
+echo "Changed dir to bak dir $BKDIR ..."
+echo "Starting tar create and remove of file/dir $TARFN"
+tarcrm.sh $TARFN
+echo "Bak dir: $BKDIR . Copy from $FROMDIR ..."
 cd $FROMDIR
 if [ "$SKIPS" != "--skipgit" -a "$SKIPS" != "--skip" ]; then
 echo "Commit from `pwd` ..."

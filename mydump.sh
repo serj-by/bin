@@ -21,3 +21,6 @@ echo "Finished GZipping SQL data in $0 for $mydump_fn ..."
 myviews_fn=views_$1_`sbdate`__`sbtime short_`__$cmnt.sql
 echo "Dumping SQL views in $0 for $myviews_fn ..."
 myq.sh --dumpviews --silent > $myviews_fn
+echo "Start GZipping VIEWS data in $0 for $myviews_fn ..."
+gzip $myviews_fn
+echo "Finished GZipping VIEWS data in $0 for $myviews_fn ..."

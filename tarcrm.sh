@@ -21,9 +21,10 @@ $CMD
 if [ $? -eq 0 ]; then
 echo "TAR exited with zero status. Success!";
 echo "removing $FNAME ...";
-CMD="rm -rv $FNAME"
+CMD="rm -rvf $FNAME"
 echo "Ececuting $CMD"
 $CMD
+echo "$FNAME removed...";
 else
 echo "Error $? while executing tar -czvf. Nothing will be removed. Error!";
 exit $?
