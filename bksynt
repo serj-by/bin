@@ -51,4 +51,10 @@ echo "Finished dumping SQL"
 else
 echo "Skip SQL dump due to first argument is '$SKIPS' ..."
 fi
+if [ "$SKIPS" != "--skipsql"  -a "$SKIPS" != "--skip" -a "$SKIPS" != "--skipmv" ]; then
+echo "Start moving SQL backups to main backup folder ($BKDIR)...";
+cd $BKDIR
+mv _sql/* . && rm -R _sql
+echo "SQLs moved to main backup folder...";
+fi
 echo "Backup complete at `sbdate dashed` @ `sbtime`"

@@ -1,4 +1,6 @@
 #! /usr/bin/env bash
+#ANAME="ProtonVPN.app.tgz"
+#FNAME="ProtonVPN.app"
 FNAME="$1"
 ANAME="$1.tgz"
 FDIR=`dirname $1`
@@ -23,10 +25,6 @@ CMD="rm -rvf $FNAME"
 echo "Ececuting $CMD"
 $CMD
 echo "$FNAME removed...";
-# moved to bksynt
-#echo "Moving SQL backups to main backup folder...";
-#mv _sql/* . && rm -R _sql
-#echo "SQL moved to main backup folder...";
 else
 echo "Error $? while executing tar -czvf. Nothing will be removed. Error!";
 exit $?
