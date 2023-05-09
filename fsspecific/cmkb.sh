@@ -4,4 +4,4 @@ scpt_name=${0##*/}
 echo "Home dir: `pwd` Script name: $scpt_name"
 cd kanboard
 echo "Kanboard dir: `pwd`"
-gcm_noint "autoupdate kanboard at `sbdate` @ `sbtime`"
+gcm_noint "autoupdate kanboard on `sbdate` @ `sbtime`"

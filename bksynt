@@ -57,4 +57,4 @@ cd $BKDIR
 mv _sql/* . && rm -R _sql
 echo "SQLs moved to main backup folder...";
 fi
-echo "Backup complete by `sbdate dashed` @ `sbtime` in $BKDIR"
+echo "Backup complete on `sbdate dashed` @ `sbtime` in $BKDIR"

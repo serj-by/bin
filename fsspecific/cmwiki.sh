@@ -3,4 +3,4 @@
 echo "Home dir: `pwd`"
 cd dokuwiki
 echo "DokuWiki dir: `pwd`"
-gcm_noint "autoupdate dokuwiki at `sbdate` @ `sbtime`"
+gcm_noint "autoupdate dokuwiki on `sbdate` @ `sbtime`"

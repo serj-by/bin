@@ -1,29 +1,22 @@
 #! /usr/bin/env bash
 
-#. cdloc
-#scpt_name=${0##*/}
-#echo "Home dir: `pwd` Script name: $scpt_name"
-#cd kanboard
-#echo "Kanboard dir: `pwd`"
-#gcm_noint "autoupdate kanboard at `sbdate` @ `sbtime`"
+scpt_name=${0##*/};
+COMMENT="autobackup in $scpt_name";
 
-#. cdloc
-#echo "Home dir: `pwd`"
-#cd dokuwiki
-#echo "DokuWiki dir: `pwd`"
-#gcm_noint "autoupdate dokuwiki at `sbdate` @ `sbtime`"
 
-#. cddevinfo
-#echo "Dev/_info dir: `pwd`"
-#gcm_noint "autoupdate devinfo at `sbdate` @ `sbtime`"
+if [[ "$@" != "" ]]; then
+    COMMENTPARAMS="$@ commitall on `sbdate` `sbtime`"
+    COMMENT="`echo -n $COMMENTPARAMS | tr -c '[[:alnum:]]' '_'`"
+fi
+echo "Comment to commit: $COMMENT";
 
-. cmkb.sh
-. cmwiki.sh
-. cmdevinf.sh
+. cmkb.sh $COMMENT
+. cmwiki.sh $COMMENT
+. cmdevinf.sh $COMMENT
 
 echo "Commited every docs `sbdate` @ `sbtime`";
 echo "Start backing up synthes...";
-bksynt --doit "autobackup in $scpt_name"
+bksynt --doit $COMMENT
 
 #read -p "Press enter to continue..." dummyvar
 keypress.sh
