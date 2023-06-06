@@ -13,7 +13,7 @@ exit -1;
 fi
 echo "Cur dir is file dir. Processing...";
 echo "Trying to create $ANAME from $FNAME...";
-CMD="tar -czvf $ANAME $FNAME"
+CMD="tar --exclude=.git --exclude=logs/*.log -czvf $ANAME $FNAME"
 echo "Ececuting $CMD"
 $CMD
 if [ $? -eq 0 ]; then

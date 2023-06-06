@@ -1,4 +1,4 @@
 #! /usr/bin/env bash
-. cdloc
-cd sistem
+. cdsynt
+cd sistem_wp
 echo "Cur dir: `pwd`"
