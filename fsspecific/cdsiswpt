@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdsynt
+cd sistem_wp/wp-content/themes/sistem
+echo "Cur dir: `pwd`"

@@ -5,27 +5,27 @@ DB="reiki_ru"
 SKIPS="$1"
 shift
 COMMENTPARAMS="$@"
-echo "Skips: $SKIPS"
-echo "CommentParams: $COMMENTPARAMS"
+echo "@bksynt: Skips: $SKIPS"
+echo "@bksynt: CommentParams: $COMMENTPARAMS"
 PARAMPART="`echo -n $COMMENTPARAMS | tr -c '[[:alnum:]]' '_'`"
 if [ "$PARAMPART" == "" ]; then
-echo "Params empty. Processing with defults..."
+echo "@bksynt: Params empty. Processing with defults..."
 TMDIR="`sbtime short_`"
 else
-echo "Suffix from param: $PARAMPART"
+echo "@bksynt: Suffix from param: $PARAMPART"
 TMDIR="`sbtime short_`__$PARAMPART"
 fi
-echo "Creating in-date directory $TMDIR ..."
+echo "@bksynt: Creating in-date directory $TMDIR ..."
 mkdir $TMDIR
 cd $TMDIR
 BKDIR=`pwd`
-echo "Bak dir: $BKDIR . Copy from $FROMDIR ..."
+echo "@bksynt: Bak dir: $BKDIR . Copy from $FROMDIR ..."
 cp -R $FROMDIR $BKDIR
 cd $BKDIR
-echo "Changed dir to bak dir $BKDIR ..."
-echo "Starting tar create and remove of file/dir $TARFN"
+echo "@bksynt: Changed dir to bak dir $BKDIR ..."
+echo "@bksynt: Starting tar create and remove of file/dir $TARFN"
 tarcrm.sh $TARFN
-echo "Bak dir: $BKDIR . Copy from $FROMDIR ..."
+echo "@bksynt: Bak dir: $BKDIR . Copy from $FROMDIR ..."
 cd $FROMDIR
 if [ "$SKIPS" != "--skipgit" -a "$SKIPS" != "--skip" ]; then
 echo "Commit from `pwd` ..."
@@ -33,28 +33,28 @@ COMMITMSG="auto commit after backup"
 if [ "$@" != "" ]; then
 COMMITMSG="$@"
 fi
-echo "Start commit with msg: $COMMITMSG"
+echo "@bksynt: Start commit with msg: $COMMITMSG"
 gcm_noint "\"$COMMITMSG\""
-echo "Finished commit with msg: $COMMITMSG"
+echo "@bksynt: Finished commit with msg: $COMMITMSG"
 else
-echo "Skip git commit due to first argument is '$SKIPS' ..."
+echo "@bksynt: Skip git commit due to first argument is '$SKIPS' ..."
 fi
 if [ "$SKIPS" != "--skipsql" -a "$SKIPS" != "--skip" ]; then
 SQLDIR=$BKDIR/_sql
 mkdir $SQLDIR
 cd $SQLDIR
-echo "Start Dumping SQL into `pwd`"
+echo "@bksynt: Start Dumping SQL into `pwd`"
 mydump.sh $DB "backup dump"
-echo "Start Dumping SISTem SQL into `pwd`"
+echo "@bksynt: Start Dumping SISTem SQL into `pwd`"
 simydump.sh $DB "backup dump"
-echo "Finished dumping SQL"
+echo "@bksynt: Finished dumping SQL"
 else
-echo "Skip SQL dump due to first argument is '$SKIPS' ..."
+echo "@bksynt: Skip SQL dump due to first argument is '$SKIPS' ..."
 fi
 if [ "$SKIPS" != "--skipsql"  -a "$SKIPS" != "--skip" -a "$SKIPS" != "--skipmv" ]; then
-echo "Start moving SQL backups to main backup folder ($BKDIR)...";
+echo "@bksynt: Start moving SQL backups to main backup folder ($BKDIR)...";
 cd $BKDIR
 mv _sql/* . && rm -R _sql
-echo "SQLs moved to main backup folder...";
+echo "@bksynt: SQLs moved to main backup folder...";
 fi
-echo "Backup complete on `sbdate dashed` @ `sbtime` in $BKDIR"
+echo "@bksynt: Backup complete on `sbdate dashed` @ `sbtime` in $BKDIR"

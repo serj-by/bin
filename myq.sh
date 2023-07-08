@@ -77,7 +77,7 @@ q="SET SESSION group_concat_max_len = 100000; SELECT replace(group_concat(distin
     exit 0;
 ;;
 *)
-    if [[ ! $silent ]]; then echo "Passed free form query $q"; fi
+    if [[ ! $silent ]]; then echo "Passed free form query $q"; exit 0; fi
 ;;
 # [ @/section synthes-myq-misc ]
 esac
