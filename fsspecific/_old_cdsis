@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdsynt
+cd src/sistem_utils
+echo "Cur dir: `pwd`"

@@ -1,4 +1,4 @@
 #! /usr/bin/env bash
 . cdloc
-cd sistem
+cd sistem/wp-content/themes/sistem
 echo "@cdsis: Cur dir: `pwd`"
