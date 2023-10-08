@@ -6,4 +6,4 @@ q='SET SESSION group_concat_max_len = 10000000; select group_concat(distinct pag
 #echo "Query: $q";
 cmd="mysql --login-path=root --silent --skip-column-names reiki_ru -e '$q'"
 echo "Lainch cmd: $cmd"
-#bash -c  "$cmd"
+bash -c  "$cmd"

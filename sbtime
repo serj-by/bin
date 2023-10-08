@@ -3,8 +3,8 @@ format="+%T"
 if [ "$1" == "short" ]; then
 format="+%H:%M";
 elif [ "$1" == "short_" ]; then
-format="+%H_%M";
+format="+%H__%M";
 elif [ "$1" == "long_" ]; then
-format="+%H_%M_%S";
+format="+%H__%M__%S";
 fi
 date $format | sed -E "s@$((12+1))@12_01@g" | sed -E "s@(\d)$((5+1))@\\15_01@g" | sed "s@$((5+1))@5_01@g"

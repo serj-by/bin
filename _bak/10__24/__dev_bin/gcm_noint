@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+git add .
+GITCMCMD="git commit --message=\"$@\" -a"
+echo "Executing commit like this: $GITCMCMD"
+exec $GITCMCMD
+GITPUCMD="bash -c 'git push'"
+echo "Executing push like this: $GITPUCMD"
+exec $GITPUCMD
+
+

@@ -1,0 +1,3 @@
+dirn=`sbdate`
+mkdir -p $dirn
+cd $dirn

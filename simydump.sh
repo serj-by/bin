@@ -2,7 +2,7 @@
 . ~/.mydb_local_conf
 USAGE="
 Usage:\n\
-$0 <dbname> [<comment>]
+`basename $0` <dbname> [<comment>]
 "
 if [ -z $1 ]; then
 echo -e $USAGE;

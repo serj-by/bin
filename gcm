@@ -1,3 +1,4 @@
 #! /usr/bin/env bash
-. gcm_noint "$@"
-keypress.sh
+git add .
+git commit -am $@
+git push

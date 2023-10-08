@@ -1,0 +1,3 @@
+#! /usr/bin/env bash
+. gcm_noint "$@"
+keypress.sh
