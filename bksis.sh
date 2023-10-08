@@ -24,7 +24,8 @@ echo "Changing dir to $SRCDIR"; cd "$SRCDIR"
 #echo "executing TARCMD: $CMD"
 #exec $CMD
 
-echo "Changing dir to $SRCDIR"; cd "$SRCDIR"; echo -n "Cur dir is:"; pwd;
+echo "Changing dir to $SRCDIR"; cd "$SRCDIR";
+echo -n "Cur dir is:"; pwd;
 echo "Starting TAR $SRCFN to $BAKFN"
 tar -czvf $BAKFN $SRCFN
 echo "Changing dir 4 git to $SRC"; cd "$SRC"
