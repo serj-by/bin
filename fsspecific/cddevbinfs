@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cddev
+cd bin/fsspecific
+echo "Cur dir (~/dev/bin): `pwd`"

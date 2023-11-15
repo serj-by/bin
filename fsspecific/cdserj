@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdloc
+cd lserjby
+echo "@cdsis: Cur dir: `pwd`"

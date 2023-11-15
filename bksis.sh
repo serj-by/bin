@@ -33,7 +33,7 @@ echo "Starting git commands in folder `pwd`"
 git add .
 git commit -m "$*"
 git push
-echo "Backup done in $0 by `sbdate dashed`@`sbtime long`. Going to old dir $OLD_DIR ..."
+echo "Backup to $BAKDIR done in $0 by `sbdate dashed`@`sbtime long`.\nGoing to old dir $OLD_DIR ..."
 #cd $SRC
 #echo -n "$SHTAG GCMCMD exec in this dir: "; pwd;
 #GCMCMD="gcm \"$COMMENT\""
@@ -41,5 +41,6 @@ echo "Backup done in $0 by `sbdate dashed`@`sbtime long`. Going to old dir $OLD_
 #. $GCMCMD
 cd $OLD_DIR
 echo -n "old dir there: "; pwd;
+. keypress.sh
 
  

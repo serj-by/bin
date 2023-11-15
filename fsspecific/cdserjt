@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cdserj
+cd sistem/wp-content/themes/serjby_theme
+echo "@cdsis: Cur dir: `pwd`"
