@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cddownsdev
+cd WP
+echo "Cur dir (~/Downloads/Development/WP): `pwd`"

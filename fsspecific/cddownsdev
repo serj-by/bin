@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+. cddowns
+cd Development
+echo "Cur dir (~/Downloads/Development): `pwd`"
