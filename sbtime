@@ -1,10 +1,29 @@
 #! /usr/bin/env bash
 format="+%T"
+subst="no"
 if [ "$1" == "short" ]; then
 format="+%H:%M";
 elif [ "$1" == "short_" ]; then
 format="+%H__%M";
 elif [ "$1" == "long_" ]; then
 format="+%H__%M__%S";
+elif [ "$1" == "shortsubst" ]; then
+format="+%H__%M";
+subst="yes"
+elif [ "$1" == "short_subst" ]; then
+format="+%H__%M";
+subst="yes"
+elif [ "$1" == "long_subst" ]; then
+format="+%H__%M__%S";
+subst="yes"
+elif [ "$1" == "defaultsubst" ]; then
+subst="yes"
 fi
-date $format | sed -E "s@$((12+1))@12_01@g" | sed -E "s@(\d)$((5+1))@\\15_01@g" | sed "s@$((5+1))@5_01@g"
+res=`date $format`
+if [ "$subst" = 'yes' ]
+then
+res=`echo "$res" | sed -E "s@$((12+1))@12_01@g" | sed -E "s@(\d)$((5+1))@\\15_01@g" | sed "s@$((5+1))@5_01@g"`
+else
+echo "subst is $subst . No subst peforming."
+fi
+echo "$res"
